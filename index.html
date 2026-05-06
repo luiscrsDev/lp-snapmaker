@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NML03ZN3YL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NML03ZN3YL');
+</script>
 <meta name="description" content="Snapmaker U1 dos EUA direto na sua porta com a GlobalBrasilShop. Preço final já calculado: produto + frete + impostos. Impressora 3D multi-cor com sistema CFS de 4 bicos. Sem susto na alfândega." />
 <meta name="keywords" content="Snapmaker U1, impressora 3D Brasil, GlobalBrasilShop, redirecionamento EUA Brasil, multi-cor, CFS" />
 <meta property="og:title" content="Snapmaker U1 — Direto dos EUA na sua porta | GlobalBrasilShop" />
@@ -1163,6 +1172,11 @@
 </a>
 
 <script>
+  // ---------- ANALYTICS HELPER ----------
+  function track(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, params || {});
+  }
+
   // ---------- CHECKOUT MODAL ----------
   function checkout() { openCheckoutModal(); }
 
@@ -1171,6 +1185,7 @@
     m.classList.add('open');
     document.body.style.overflow = 'hidden';
     setTimeout(() => { const f = document.getElementById('cpf'); if (f) f.focus(); }, 200);
+    track('begin_checkout', { product: 'Snapmaker U1', value: 12970, currency: 'BRL' });
   }
   function closeCheckoutModal() {
     document.getElementById('checkoutModal').classList.remove('open');
@@ -1276,8 +1291,20 @@ ${get('bairro')} — ${get('cidade')}/${get('estado')}
 CEP: ${get('cep')}
 
 Aguardo confirmação do valor final (cotação do dólar do dia) e instruções de pagamento.`;
+    track('generate_lead', {
+      product: 'Snapmaker U1',
+      value: 12970,
+      currency: 'BRL',
+      city: get('cidade'),
+      state: get('estado')
+    });
     window.open('https://wa.me/13053152155?text=' + encodeURIComponent(msg), '_blank');
   }
+
+  // Track WhatsApp float clicks
+  document.querySelector('.whatsapp-float')?.addEventListener('click', () => {
+    track('whatsapp_click', { source: 'float_button' });
+  });
 
   // Smooth scroll boost
   document.querySelectorAll('a[href^="#"]').forEach(link => {
