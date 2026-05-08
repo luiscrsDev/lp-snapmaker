@@ -1,0 +1,49 @@
+# robots.txt — snapmaker.globalbrasilshop.com
+# GlobalBrasilShop — landing Snapmaker U1
+
+# Default: allow everything
+User-agent: *
+Allow: /
+
+# Social crawlers — explicitly allowed
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot-LinkExpanding
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+Sitemap: https://snapmaker.globalbrasilshop.com/sitemap.xml
