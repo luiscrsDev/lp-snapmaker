@@ -1155,10 +1155,10 @@
         </div>
 
         <button type="submit" class="modal-submit">
-          Continuar pelo WhatsApp →
+          Ir pro pagamento seguro →
         </button>
         <p class="modal-foot-note">
-          Ao continuar, abrimos uma conversa no WhatsApp com seus dados pré-preenchidos pra fechar o pagamento (Pix, cartão até 10x ou boleto). *Valor sujeito a variação conforme cotação do dólar do dia da compra.
+          Pagamento processado pela ParceladoPay com criptografia SSL. Pix, cartão até 10x ou boleto. *Valor sujeito a variação conforme cotação do dólar do dia da compra.
         </p>
       </form>
     </div>
@@ -1265,8 +1265,8 @@
     e.target.classList.toggle('has-value', !!e.target.value);
   });
 
-  // ----- Submit -> WhatsApp with all data -----
-  function submitCheckout(e) {
+  // ----- Submit -> ParceladoPay (API central) com fallback WhatsApp -----
+  async function submitCheckout(e) {
     e.preventDefault();
     const f = e.target;
     const required = ['cpf','nome','email','telefone','cep','endereco','numero','bairro','cidade','estado'];
@@ -1276,29 +1276,76 @@
     }
     const get = id => f.querySelector('#' + id).value.trim();
     const compl = get('complemento');
-    const msg =
+
+    const clientData = {
+      nome: get('nome'), cpf: get('cpf'), email: get('email'), telefone: get('telefone'),
+      cep: get('cep'), endereco: get('endereco'), numero: get('numero'),
+      complemento: compl, bairro: get('bairro'), cidade: get('cidade'), estado: get('estado')
+    };
+
+    const whatsappMsg =
 `Olá! Quero comprar a *Snapmaker U1* por R$ 12.970*
 
 *👤 Dados do titular:*
-Nome: ${get('nome')}
-CPF/CNPJ: ${get('cpf')}
-E-mail: ${get('email')}
-WhatsApp: +55 ${get('telefone')}
+Nome: ${clientData.nome}
+CPF/CNPJ: ${clientData.cpf}
+E-mail: ${clientData.email}
+WhatsApp: +55 ${clientData.telefone}
 
 *📍 Endereço de entrega:*
-${get('endereco')}, ${get('numero')}${compl ? ' — ' + compl : ''}
-${get('bairro')} — ${get('cidade')}/${get('estado')}
-CEP: ${get('cep')}
+${clientData.endereco}, ${clientData.numero}${compl ? ' — ' + compl : ''}
+${clientData.bairro} — ${clientData.cidade}/${clientData.estado}
+CEP: ${clientData.cep}
 
-Aguardo confirmação do valor final (cotação do dólar do dia) e instruções de pagamento.`;
+Aguardo instruções de pagamento.`;
+
     track('qualify_lead', {
       product: 'Snapmaker U1',
       value: 12970,
       currency: 'BRL',
-      city: get('cidade'),
-      state: get('estado')
+      city: clientData.cidade,
+      state: clientData.estado
     });
-    window.open('https://wa.me/13053152155?text=' + encodeURIComponent(msg), '_blank');
+
+    const submitBtn = f.querySelector('.modal-submit');
+    const originalBtnText = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Gerando link de pagamento…';
+    }
+
+    // API central GBS (compartilhada por todas as LPs)
+    const PAYMENTS_API = 'https://api.globalbrasilshop.com/api/create-payment';
+    const PRODUCT_ID = 'snapmaker-u1';
+
+    try {
+      const resp = await fetch(PAYMENTS_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ product_id: PRODUCT_ID, ...clientData })
+      });
+      const data = await resp.json();
+
+      if (resp.ok && data.success && data.paymentUrl) {
+        track('begin_checkout_redirect', { orderId: data.orderId, product: 'Snapmaker U1' });
+        window.location.href = data.paymentUrl;
+        return;
+      }
+
+      console.warn('Falha ao gerar link de pagamento, fallback WhatsApp:', data);
+      track('payment_link_fallback_wa', { reason: data.error || 'unknown' });
+      window.open('https://wa.me/13053152155?text=' + encodeURIComponent(whatsappMsg), '_blank');
+
+    } catch (err) {
+      console.error('Erro de rede ao chamar API central de pagamentos:', err);
+      track('payment_link_fallback_wa', { reason: 'network_error' });
+      window.open('https://wa.me/13053152155?text=' + encodeURIComponent(whatsappMsg), '_blank');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    }
   }
 
   // Track WhatsApp float clicks
