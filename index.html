@@ -424,34 +424,92 @@
   }
   #pricing .section-title { color: #fff; }
   #pricing .section-eyebrow { background: rgba(255,255,255,0.2); color: #fff; }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 980px;
+    margin: 32px auto 0;
+  }
+  @media (max-width: 800px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+  }
   .pricing-card {
-    max-width: 540px; margin: 0 auto;
     background: #fff; color: var(--accent);
     border-radius: 20px;
-    padding: 40px;
+    padding: 32px 28px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.25);
     text-align: center;
+    display: flex; flex-direction: column;
+    position: relative;
   }
-  .pricing-card .pre-price { color: var(--muted); font-size: 14px; margin-bottom: 4px; }
-  .pricing-card .strike-big { color: var(--muted); text-decoration: line-through; font-size: 18px; }
+  .pricing-card.reserve-card {
+    background: linear-gradient(160deg, #fffbeb 0%, #fff 60%);
+    border: 2px solid #fbbf24;
+  }
+  .card-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: #fbbf24; color: #78350f;
+    padding: 6px 18px; border-radius: 999px;
+    font-weight: 800; font-size: 12px; letter-spacing: .04em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(251,191,36,0.4);
+    white-space: nowrap;
+  }
+  .card-badge.badge-blue {
+    background: var(--primary); color: #fff;
+    box-shadow: 0 4px 12px rgba(30,58,138,0.4);
+  }
+  .pricing-card .pre-price { color: var(--muted); font-size: 13px; margin-bottom: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+  .pricing-card .strike-big { color: var(--muted); text-decoration: line-through; font-size: 16px; }
   .pricing-card .big-price {
-    font-size: 56px; font-weight: 900;
+    font-size: 48px; font-weight: 900;
     color: var(--primary); letter-spacing: -0.03em;
     line-height: 1; margin: 8px 0;
   }
-  .pricing-card .big-price small { font-size: 22px; color: var(--accent); font-weight: 700; }
-  .pricing-card .installments { font-size: 16px; color: var(--accent); margin-bottom: 8px; }
+  .pricing-card.reserve-card .big-price { color: #b45309; }
+  .pricing-card .big-price small { font-size: 18px; color: var(--accent); font-weight: 700; }
+  .pricing-card .installments { font-size: 15px; color: var(--accent); margin-bottom: 8px; }
   .pricing-card .savings-big {
     background: #dcfce7; color: #166534;
-    padding: 8px 16px; border-radius: 8px;
-    font-weight: 800; font-size: 15px;
-    display: inline-block; margin: 16px 0;
+    padding: 6px 14px; border-radius: 8px;
+    font-weight: 800; font-size: 14px;
+    display: inline-block; margin: 12px 0;
   }
-  .pricing-card .btn-primary { width: 100%; justify-content: center; padding: 18px; font-size: 17px; margin-top: 16px; }
+  .card-features {
+    text-align: left; margin: 16px 0; padding: 16px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    list-style: none;
+  }
+  .card-features li {
+    padding: 6px 0 6px 26px;
+    position: relative;
+    font-size: 14px; color: var(--accent);
+    line-height: 1.45;
+  }
+  .card-features li::before {
+    content: '✓';
+    position: absolute; left: 0; top: 6px;
+    color: #16a34a; font-weight: 900;
+  }
+  .pricing-card.reserve-card .card-features li::before { color: #b45309; }
+  .pricing-card .btn-primary {
+    width: 100%; justify-content: center; padding: 16px;
+    font-size: 16px; margin-top: auto;
+  }
+  .pricing-card.reserve-card .btn-primary {
+    background: #fbbf24; color: #78350f;
+  }
+  .pricing-card.reserve-card .btn-primary:hover {
+    background: #f59e0b; color: #78350f;
+    box-shadow: 0 6px 18px rgba(251,191,36,0.5);
+  }
   .pricing-card .pay-methods {
-    margin-top: 20px; padding-top: 20px;
+    margin-top: 16px; padding-top: 16px;
     border-top: 1px solid var(--border);
-    font-size: 13px; color: var(--muted);
+    font-size: 12px; color: var(--muted);
+    line-height: 1.5;
   }
   .pricing-card .pay-methods strong { color: var(--accent); }
 
@@ -941,22 +999,59 @@
       <p style="color: rgba(255,255,255,0.9);">Estoque limitado por importação. Pagamento à vista no Pix ou parcelado no cartão.</p>
     </div>
 
-    <div class="pricing-card">
-      <div class="pre-price">Snapmaker U1</div>
-      <div class="strike-big">De R$ 15.990</div>
-      <div class="big-price">R$ 12.970<sup style="font-size:24px;color:var(--primary);">*</sup><small> à vista</small></div>
-      <div class="installments">ou <strong>10x de R$ 1.551,60*</strong> sem juros no cartão</div>
-      <div class="savings-big">💰 Economia de R$ 3.020 vs revendedores BR</div>
-      <div class="price-note-big">*Valor sujeito a variação conforme cotação do dólar no dia da compra.</div>
+    <div class="pricing-grid">
 
-      <a href="#" class="btn-primary" onclick="checkout('pre-venda'); return false;">
-        Comprar agora →
-      </a>
+      <!-- CARD 1: COMPRA INTEGRAL -->
+      <div class="pricing-card">
+        <span class="card-badge badge-blue">Pagamento integral</span>
+        <div class="pre-price">Snapmaker U1</div>
+        <div class="strike-big">De R$ 15.990</div>
+        <div class="big-price">R$ 12.970<sup style="font-size:20px;color:var(--primary);">*</sup><small> à vista</small></div>
+        <div class="installments">ou <strong>18× de R$ 940,17</strong> no cartão</div>
+        <div class="savings-big">💰 Economia de R$ 3.020 vs revendedores BR</div>
 
-      <div class="pay-methods">
-        <strong>Formas de pagamento:</strong> Pix · Cartão até 12x · Boleto · Transferência<br>
-        <strong>Tudo incluso:</strong> produto + frete internacional + impostos + entrega no Brasil
+        <ul class="card-features">
+          <li>Pagamento integral hoje (Pix, cartão até 18× ou boleto)</li>
+          <li>Entrega rastreada em <strong>20–35 dias úteis</strong> na sua porta</li>
+          <li>Cobre todo o Brasil — qualquer cidade</li>
+          <li>Produto + frete internacional + impostos inclusos</li>
+        </ul>
+
+        <a href="#" class="btn-primary" onclick="checkout('integral'); return false;">
+          Comprar agora →
+        </a>
+
+        <div class="pay-methods">
+          *Valor sujeito a variação conforme cotação do dólar no dia da compra.
+        </div>
       </div>
+
+      <!-- CARD 2: RESERVA -->
+      <div class="pricing-card reserve-card">
+        <span class="card-badge">🔒 Trava o preço</span>
+        <div class="pre-price">Reserva Snapmaker U1</div>
+        <div class="strike-big">Garante R$ 12.970 agora</div>
+        <div class="big-price">R$ 1.000<small> de sinal</small></div>
+        <div class="installments">+ R$ 11.970 na retirada em SP</div>
+        <div class="savings-big" style="background:#fef3c7;color:#78350f;">⚡ Protege contra alta do dólar</div>
+
+        <ul class="card-features">
+          <li>Sinal de <strong>R$ 1.000</strong> via Pix ou cartão (até 10×)</li>
+          <li>Trava o preço final em <strong>R$ 12.970</strong> mesmo se o dólar subir</li>
+          <li>Retirada presencial no nosso galpão em <strong>São Paulo</strong> quando o produto chegar (~30 dias)</li>
+          <li>Pagamento dos R$ 11.970 restantes só na retirada</li>
+          <li><strong>Sinal não reembolsável</strong> — vale como garantia da unidade</li>
+        </ul>
+
+        <a href="#" class="btn-primary" onclick="checkout('reserva'); return false;">
+          Reservar por R$ 1.000 →
+        </a>
+
+        <div class="pay-methods">
+          Ideal pra quem está em SP ou pode buscar. Câmbio travado no momento da reserva.
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1068,7 +1163,7 @@
 </footer>
 
 <!-- CHECKOUT MODAL -->
-<div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" data-mode="integral">
   <div class="modal" role="document">
     <div class="modal-header">
       <h3 id="modalTitle">Finalizar pedido — Snapmaker U1</h3>
@@ -1077,10 +1172,14 @@
     <div class="modal-body">
       <div class="modal-summary">
         <div>
-          <div class="summary-label">Seu pedido</div>
-          <div class="summary-product">Snapmaker U1</div>
+          <div class="summary-label" id="summaryLabel">Seu pedido</div>
+          <div class="summary-product" id="summaryProduct">Snapmaker U1</div>
         </div>
-        <div class="summary-price">R$ 12.970*</div>
+        <div class="summary-price" id="summaryPrice">R$ 12.970*</div>
+      </div>
+      <div id="reserveNote" style="display:none; background:#fef3c7; border:1px solid #fbbf24; border-radius:10px; padding:12px 14px; margin-bottom:16px; font-size:13px; color:#78350f; line-height:1.5;">
+        <strong>🔒 Reserva — sinal de R$ 1.000</strong><br>
+        Trava o preço final de <strong>R$ 12.970</strong>. Você paga os <strong>R$ 11.970</strong> restantes na retirada presencial em SP quando o produto chegar (~30 dias). Sinal não reembolsável.
       </div>
 
       <form id="checkoutForm" onsubmit="submitCheckout(event)" autocomplete="on" novalidate>
@@ -1178,14 +1277,52 @@
   }
 
   // ---------- CHECKOUT MODAL ----------
-  function checkout() { openCheckoutModal(); }
+  // Configuração por modo de checkout (integral vs reserva)
+  const CHECKOUT_MODES = {
+    integral: {
+      product_id: 'snapmaker-u1',
+      title: 'Finalizar pedido — Snapmaker U1',
+      product_label: 'Snapmaker U1 (pagamento integral)',
+      summary_price: 'R$ 12.970*',
+      track_value: 12970,
+      submit_text: 'Gerar link de pagamento',
+      wa_subject: 'comprar a *Snapmaker U1* por R$ 12.970*',
+      show_reserve_note: false,
+    },
+    reserva: {
+      product_id: 'snapmaker-u1-reservation',
+      title: 'Reservar Snapmaker U1 — Sinal de R$ 1.000',
+      product_label: 'Reserva Snapmaker U1 — Sinal de R$ 1.000',
+      summary_price: 'R$ 1.000',
+      track_value: 1000,
+      submit_text: 'Gerar link da reserva',
+      wa_subject: 'reservar a *Snapmaker U1* com sinal de R$ 1.000 (saldo de R$ 11.970 na retirada em SP)',
+      show_reserve_note: true,
+    }
+  };
 
-  function openCheckoutModal() {
+  function checkout(mode) {
+    mode = mode === 'reserva' ? 'reserva' : 'integral';
+    const cfg = CHECKOUT_MODES[mode];
+    const modal = document.getElementById('checkoutModal');
+    modal.dataset.mode = mode;
+    document.getElementById('modalTitle').textContent = cfg.title;
+    document.getElementById('summaryProduct').textContent = cfg.product_label;
+    document.getElementById('summaryPrice').textContent = cfg.summary_price;
+    document.getElementById('reserveNote').style.display = cfg.show_reserve_note ? 'block' : 'none';
+    const submitBtn = document.querySelector('#checkoutForm .modal-submit');
+    if (submitBtn) submitBtn.textContent = cfg.submit_text;
+    openCheckoutModal(mode);
+  }
+
+  function openCheckoutModal(mode) {
+    mode = mode || 'integral';
+    const cfg = CHECKOUT_MODES[mode];
     const m = document.getElementById('checkoutModal');
     m.classList.add('open');
     document.body.style.overflow = 'hidden';
     setTimeout(() => { const f = document.getElementById('cpf'); if (f) f.focus(); }, 200);
-    track('begin_checkout', { product: 'Snapmaker U1', value: 12970, currency: 'BRL' });
+    track('begin_checkout', { product: 'Snapmaker U1', mode: mode, value: cfg.track_value, currency: 'BRL' });
   }
   function closeCheckoutModal() {
     document.getElementById('checkoutModal').classList.remove('open');
@@ -1283,8 +1420,11 @@
       complemento: compl, bairro: get('bairro'), cidade: get('cidade'), estado: get('estado')
     };
 
+    const mode = document.getElementById('checkoutModal').dataset.mode || 'integral';
+    const cfg = CHECKOUT_MODES[mode];
+
     const whatsappMsg =
-`Olá! Quero comprar a *Snapmaker U1* por R$ 12.970*
+`Olá! Quero ${cfg.wa_subject}
 
 *👤 Dados do titular:*
 Nome: ${clientData.nome}
@@ -1292,7 +1432,7 @@ CPF/CNPJ: ${clientData.cpf}
 E-mail: ${clientData.email}
 WhatsApp: +55 ${clientData.telefone}
 
-*📍 Endereço de entrega:*
+*📍 Endereço de ${mode === 'reserva' ? 'cobrança (retirada presencial em SP)' : 'entrega'}:*
 ${clientData.endereco}, ${clientData.numero}${compl ? ' — ' + compl : ''}
 ${clientData.bairro} — ${clientData.cidade}/${clientData.estado}
 CEP: ${clientData.cep}
@@ -1301,7 +1441,8 @@ Aguardo instruções de pagamento.`;
 
     track('qualify_lead', {
       product: 'Snapmaker U1',
-      value: 12970,
+      mode: mode,
+      value: cfg.track_value,
       currency: 'BRL',
       city: clientData.cidade,
       state: clientData.estado
@@ -1316,7 +1457,7 @@ Aguardo instruções de pagamento.`;
 
     // API central GBS (compartilhada por todas as LPs)
     const PAYMENTS_API = 'https://api.globalbrasilshop.com/api/create-payment';
-    const PRODUCT_ID = 'snapmaker-u1';
+    const PRODUCT_ID = cfg.product_id;
 
     try {
       const resp = await fetch(PAYMENTS_API, {
@@ -1327,7 +1468,7 @@ Aguardo instruções de pagamento.`;
       const data = await resp.json();
 
       if (resp.ok && data.success && data.paymentUrl) {
-        track('begin_checkout_redirect', { orderId: data.orderId, product: 'Snapmaker U1' });
+        track('begin_checkout_redirect', { orderId: data.orderId, product: 'Snapmaker U1', mode: mode });
         window.location.href = data.paymentUrl;
         return;
       }
