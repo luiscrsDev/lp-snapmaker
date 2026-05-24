@@ -1003,15 +1003,16 @@
 
       <!-- CARD 1: COMPRA INTEGRAL -->
       <div class="pricing-card">
-        <span class="card-badge badge-blue">Pagamento integral</span>
+        <span class="card-badge badge-blue">💸 Menor preço</span>
         <div class="pre-price">Snapmaker U1</div>
-        <div class="strike-big">De R$ 15.990</div>
+        <div class="strike-big">De R$ 15.990 no revendedor BR</div>
         <div class="big-price">R$ 12.970<sup style="font-size:20px;color:var(--primary);">*</sup><small> à vista</small></div>
         <div class="installments">ou <strong>18× de R$ 940,17</strong> no cartão</div>
-        <div class="savings-big">💰 Economia de R$ 3.020 vs revendedores BR</div>
+        <div class="savings-big">💰 Economize R$ 750 vs reserva + R$ 3.020 vs revendedor BR</div>
 
         <ul class="card-features">
-          <li>Pagamento integral hoje (Pix, cartão até 18× ou boleto)</li>
+          <li><strong>Melhor preço</strong> — pagando hoje você não paga o premium da reserva</li>
+          <li>Pix, cartão até 18× ou boleto</li>
           <li>Entrega rastreada em <strong>20–35 dias úteis</strong> na sua porta</li>
           <li>Cobre todo o Brasil — qualquer cidade</li>
           <li>Produto + frete internacional + impostos inclusos</li>
@@ -1030,25 +1031,25 @@
       <div class="pricing-card reserve-card">
         <span class="card-badge">🔒 Trava o preço</span>
         <div class="pre-price">Reserva Snapmaker U1</div>
-        <div class="strike-big">Garante R$ 12.970 agora</div>
-        <div class="big-price">R$ 1.000<small> de sinal</small></div>
-        <div class="installments">+ R$ 11.970 na retirada em SP</div>
-        <div class="savings-big" style="background:#fef3c7;color:#78350f;">⚡ Protege contra alta do dólar</div>
+        <div class="strike-big">Total: R$ 13.720 (R$ 750 premium pela reserva)</div>
+        <div class="big-price">R$ 750<small> de sinal</small></div>
+        <div class="installments">+ R$ 12.970 na retirada em SP</div>
+        <div class="savings-big" style="background:#fef3c7;color:#78350f;">⚡ Sem grana toda agora? Paga só o premium e garante sua U1</div>
 
         <ul class="card-features">
-          <li>Sinal de <strong>R$ 1.000</strong> via Pix ou cartão (até 10×)</li>
-          <li>Trava o preço final em <strong>R$ 12.970</strong> mesmo se o dólar subir</li>
-          <li>Retirada presencial no nosso galpão em <strong>São Paulo</strong> quando o produto chegar (~30 dias)</li>
-          <li>Pagamento dos R$ 11.970 restantes só na retirada</li>
+          <li>Sinal de <strong>R$ 750</strong> hoje (Pix ou cartão até 10×)</li>
+          <li>Saldo de <strong>R$ 12.970</strong> só na retirada presencial em <strong>SP</strong></li>
+          <li>O sinal <strong>É o premium</strong> da reserva — garante: preço travado mesmo se o dólar subir + unidade reservada no seu nome</li>
+          <li>Retirada quando o produto chegar no nosso galpão (~30 dias)</li>
           <li><strong>Sinal não reembolsável</strong> — vale como garantia da unidade</li>
         </ul>
 
         <a href="#" class="btn-primary" onclick="checkout('reserva'); return false;">
-          Reservar por R$ 1.000 →
+          Reservar por R$ 750 →
         </a>
 
         <div class="pay-methods">
-          Ideal pra quem está em SP ou pode buscar. Câmbio travado no momento da reserva.
+          Ideal pra quem está em SP ou pode buscar — e quer garantir a unidade sem desembolsar tudo hoje.
         </div>
       </div>
 
@@ -1178,8 +1179,8 @@
         <div class="summary-price" id="summaryPrice">R$ 12.970*</div>
       </div>
       <div id="reserveNote" style="display:none; background:#fef3c7; border:1px solid #fbbf24; border-radius:10px; padding:12px 14px; margin-bottom:16px; font-size:13px; color:#78350f; line-height:1.5;">
-        <strong>🔒 Reserva — sinal de R$ 1.000</strong><br>
-        Trava o preço final de <strong>R$ 12.970</strong>. Você paga os <strong>R$ 11.970</strong> restantes na retirada presencial em SP quando o produto chegar (~30 dias). Sinal não reembolsável.
+        <strong>🔒 Reserva — sinal de R$ 750 (premium pela reserva)</strong><br>
+        O sinal é o premium que trava o preço da U1 em <strong>R$ 12.970</strong> mesmo se o dólar subir, e garante sua unidade. Você paga o saldo de <strong>R$ 12.970</strong> na retirada presencial em SP quando o produto chegar (~30 dias). <strong>Total: R$ 13.720.</strong> Sinal não reembolsável.
       </div>
 
       <form id="checkoutForm" onsubmit="submitCheckout(event)" autocomplete="on" novalidate>
@@ -1291,12 +1292,12 @@
     },
     reserva: {
       product_id: 'snapmaker-u1-reservation',
-      title: 'Reservar Snapmaker U1 — Sinal de R$ 1.000',
-      product_label: 'Reserva Snapmaker U1 — Sinal de R$ 1.000',
-      summary_price: 'R$ 1.000',
-      track_value: 1000,
+      title: 'Reservar Snapmaker U1 — Sinal de R$ 750',
+      product_label: 'Reserva Snapmaker U1 — Sinal de R$ 750',
+      summary_price: 'R$ 750',
+      track_value: 750,
       submit_text: 'Gerar link da reserva',
-      wa_subject: 'reservar a *Snapmaker U1* com sinal de R$ 1.000 (saldo de R$ 11.970 na retirada em SP)',
+      wa_subject: 'reservar a *Snapmaker U1* com sinal de R$ 750 (premium da reserva). Saldo de R$ 12.970 na retirada em SP',
       show_reserve_note: true,
     }
   };
