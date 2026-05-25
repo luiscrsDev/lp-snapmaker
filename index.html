@@ -425,14 +425,8 @@
   #pricing .section-title { color: #fff; }
   #pricing .section-eyebrow { background: rgba(255,255,255,0.2); color: #fff; }
   .pricing-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: 980px;
+    max-width: 600px;
     margin: 32px auto 0;
-  }
-  @media (max-width: 800px) {
-    .pricing-grid { grid-template-columns: 1fr; }
   }
   .pricing-card {
     background: #fff; color: var(--accent);
@@ -751,7 +745,7 @@
         <a href="#specs">Especificações</a>
         <a href="#process">Como funciona</a>
         <a href="#faq">FAQ</a>
-        <a href="#pricing" class="nav-cta">Garantir o meu</a>
+        <a href="#pricing" class="nav-cta">Reservar por R$ 750</a>
       </div>
     </nav>
   </div>
@@ -762,19 +756,19 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <span class="hero-badge"><span class="dot"></span> Disponível na GlobalBrasilShop</span>
-        <h1>Snapmaker U1 dos EUA <span>direto na sua porta</span>, com preço final já calculado</h1>
-        <p class="lead">A impressora 3D multi-cor mais esperada do mundo, com o sistema CFS de 4 bicos independentes. A GBS pesquisa, compra e entrega — produto + frete + impostos já inclusos. Sem trabalho, sem susto na alfândega.</p>
+        <span class="hero-badge"><span class="dot"></span> Pré-venda Brasil · Vagas limitadas</span>
+        <h1>Garanta sua <span>Snapmaker U1</span> por apenas R$ 750</h1>
+        <p class="lead">Reserve a sua unidade hoje com R$ 750 e pague o saldo de R$ 12.970 (ou 10× R$ 1.582,82) só na entrega em SP-Capital. O sinal trava o preço mesmo se o dólar subir — sem risco, sem alfândega, sem grande desembolso agora.</p>
 
         <div class="hero-price-card">
           <div class="strike">De R$ 15.990 nos revendedores BR</div>
-          <div class="price">R$ 12.970<sup style="font-size:18px;color:var(--primary);">*</sup><small> à vista</small></div>
-          <div class="savings">💰 Economize até R$ 3.020</div>
-          <div class="price-note">*Valor sujeito a variação conforme cotação do dólar no dia da compra.</div>
+          <div class="price">R$ 750<small> de sinal hoje</small></div>
+          <div class="savings">+ R$ 12.970 só na entrega em SP-Capital (~30 dias)</div>
+          <div class="price-note">Sinal não reembolsável — vale como garantia da sua unidade.</div>
         </div>
 
         <div class="hero-cta-row">
-          <a href="#pricing" class="btn-primary">Garantir minha unidade →</a>
+          <a href="#pricing" class="btn-primary">Reservar por R$ 750 →</a>
           <a href="#comparison" class="btn-secondary">Ver comparativo</a>
         </div>
 
@@ -847,8 +841,8 @@
 
       <div class="compare-card winner">
         <h3>🇺🇸🇧🇷 GlobalBrasilShop</h3>
-        <div class="compare-price">R$ 12.970<sup style="font-size:18px;">*</sup></div>
-        <div class="compare-sub">Preço final na sua porta, sem surpresas <em style="opacity:0.7;">*sujeito à cotação do dólar do dia</em></div>
+        <div class="compare-price">R$ 13.720<sup style="font-size:18px;">*</sup></div>
+        <div class="compare-sub">R$ 750 de sinal + R$ 12.970 (ou 10× R$ 1.582,82) na entrega em SP-Capital — sem alfândega, sem surpresas <em style="opacity:0.7;">*sujeito à cotação do dólar do dia</em></div>
         <ul class="compare-list">
           <li><span class="icon icon-yes">✓</span> Atendimento em português via WhatsApp</li>
           <li><span class="icon icon-yes">✓</span> Produto + frete + impostos já calculados</li>
@@ -1001,46 +995,20 @@
 
     <div class="pricing-grid">
 
-      <!-- CARD 1: COMPRA INTEGRAL -->
-      <div class="pricing-card">
-        <span class="card-badge badge-blue">💸 Menor preço</span>
-        <div class="pre-price">Snapmaker U1</div>
-        <div class="strike-big">De R$ 15.990 no revendedor BR</div>
-        <div class="big-price">R$ 12.970<sup style="font-size:20px;color:var(--primary);">*</sup><small> à vista</small></div>
-        <div class="installments">ou <strong>18× de R$ 940,17</strong> no cartão</div>
-        <div class="savings-big">💰 Economize R$ 750 vs reserva + R$ 3.020 vs revendedor BR</div>
-
-        <ul class="card-features">
-          <li><strong>Melhor preço</strong> — pagando hoje você não paga o premium da reserva</li>
-          <li>Pix, cartão até 18× ou boleto</li>
-          <li>Entrega rastreada em <strong>20–35 dias úteis</strong> na sua porta</li>
-          <li>Cobre todo o Brasil — qualquer cidade</li>
-          <li>Produto + frete internacional + impostos inclusos</li>
-        </ul>
-
-        <a href="#" class="btn-primary" onclick="checkout('integral'); return false;">
-          Comprar agora →
-        </a>
-
-        <div class="pay-methods">
-          *Valor sujeito a variação conforme cotação do dólar no dia da compra.
-        </div>
-      </div>
-
-      <!-- CARD 2: RESERVA -->
+      <!-- CARD ÚNICO: RESERVA -->
       <div class="pricing-card reserve-card">
         <span class="card-badge">🔒 Trava o preço</span>
         <div class="pre-price">Reserva Snapmaker U1</div>
         <div class="strike-big">De R$ 15.990 no revendedor BR</div>
         <div class="big-price">R$ 750<small> de sinal</small></div>
-        <div class="installments">+ saldo de R$ 12.970 <strong>ou 10× R$ 1.582,82</strong> só quando retirar em SP</div>
+        <div class="installments">+ saldo de R$ 12.970 <strong>ou 10× R$ 1.582,82</strong> só na entrega em SP-Capital</div>
         <div class="savings-big" style="background:#fef3c7;color:#78350f;">⚡ Garanta sua Snapmaker por apenas R$ 750 e só pague o saldo quando ela chegar</div>
 
         <ul class="card-features">
           <li>Sinal de <strong>R$ 750</strong> hoje (Pix ou cartão)</li>
-          <li>Saldo de <strong>R$ 12.970</strong> à vista <strong>ou 10× R$ 1.582,82</strong>, somente quando retirar em SP</li>
+          <li>Saldo de <strong>R$ 12.970</strong> à vista <strong>ou 10× R$ 1.582,82</strong>, somente na entrega em SP-Capital</li>
           <li>O sinal é o premium da reserva — garante: preço travado mesmo se o dólar subir + unidade reservada no seu nome</li>
-          <li><strong>Chegada garantida</strong> em 20–30 dias no nosso galpão em SP</li>
+          <li><strong>Chegada garantida</strong> em 20–30 dias no nosso galpão em SP-Capital</li>
           <li><strong>Sinal não reembolsável</strong> — vale como garantia da unidade</li>
         </ul>
 
@@ -1113,7 +1081,7 @@
       <p class="section-sub">Apenas 50 unidades nesta pré-venda. Quando acabar, o próximo lote sai pelo preço cheio.</p>
     </div>
     <div style="text-align: center;">
-      <a href="#pricing" class="btn-primary">Garantir minha U1 →</a>
+      <a href="#pricing" class="btn-primary">Reservar por R$ 750 →</a>
       <div style="margin-top: 24px; font-size: 14px; color: #94a3b8;">
         Dúvidas? Fale com a gente: <a href="https://wa.me/13053152155" style="color: #25D366; font-weight: 700;">WhatsApp +1 (305) 315-2155</a>
       </div>
@@ -1164,23 +1132,23 @@
 </footer>
 
 <!-- CHECKOUT MODAL -->
-<div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" data-mode="integral">
+<div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" data-mode="reserva">
   <div class="modal" role="document">
     <div class="modal-header">
-      <h3 id="modalTitle">Finalizar pedido — Snapmaker U1</h3>
+      <h3 id="modalTitle">Reservar Snapmaker U1 — Sinal de R$ 750</h3>
       <button type="button" class="modal-close" onclick="closeCheckoutModal()" aria-label="Fechar">×</button>
     </div>
     <div class="modal-body">
       <div class="modal-summary">
         <div>
-          <div class="summary-label" id="summaryLabel">Seu pedido</div>
-          <div class="summary-product" id="summaryProduct">Snapmaker U1</div>
+          <div class="summary-label" id="summaryLabel">Sua reserva</div>
+          <div class="summary-product" id="summaryProduct">Reserva Snapmaker U1 — Sinal de R$ 750</div>
         </div>
-        <div class="summary-price" id="summaryPrice">R$ 12.970*</div>
+        <div class="summary-price" id="summaryPrice">R$ 750</div>
       </div>
-      <div id="reserveNote" style="display:none; background:#fef3c7; border:1px solid #fbbf24; border-radius:10px; padding:12px 14px; margin-bottom:16px; font-size:13px; color:#78350f; line-height:1.5;">
+      <div id="reserveNote" style="display:block; background:#fef3c7; border:1px solid #fbbf24; border-radius:10px; padding:12px 14px; margin-bottom:16px; font-size:13px; color:#78350f; line-height:1.5;">
         <strong>🔒 Reserva — sinal de R$ 750 (premium pela reserva)</strong><br>
-        Garanta sua Snapmaker por apenas R$ 750 hoje e só pague o saldo quando ela chegar. O sinal trava o preço em <strong>R$ 12.970</strong> mesmo se o dólar subir e garante sua unidade. O saldo de <strong>R$ 12.970</strong> (ou <strong>10× R$ 1.582,82</strong>) é pago somente na retirada em SP, após a chegada em 20–30 dias. <strong>Total à vista: R$ 13.720.</strong> Sinal não reembolsável.
+        Garanta sua Snapmaker por apenas R$ 750 hoje e só pague o saldo quando ela chegar. O sinal trava o preço em <strong>R$ 12.970</strong> mesmo se o dólar subir e garante sua unidade. O saldo de <strong>R$ 12.970</strong> (ou <strong>10× R$ 1.582,82</strong>) é pago somente na entrega em SP-Capital, após a chegada em 20–30 dias. <strong>Total à vista: R$ 13.720.</strong> Sinal não reembolsável.
       </div>
 
       <form id="checkoutForm" onsubmit="submitCheckout(event)" autocomplete="on" novalidate>
@@ -1278,18 +1246,9 @@
   }
 
   // ---------- CHECKOUT MODAL ----------
-  // Configuração por modo de checkout (integral vs reserva)
+  // Único modo ativo: reserva (R$ 750 sinal + saldo na entrega em SP-Capital).
+  // Pagamento integral foi removido depois de validar com a turma — barreira alta demais.
   const CHECKOUT_MODES = {
-    integral: {
-      product_id: 'snapmaker-u1',
-      title: 'Finalizar pedido — Snapmaker U1',
-      product_label: 'Snapmaker U1 (pagamento integral)',
-      summary_price: 'R$ 12.970*',
-      track_value: 12970,
-      submit_text: 'Gerar link de pagamento',
-      wa_subject: 'comprar a *Snapmaker U1* por R$ 12.970*',
-      show_reserve_note: false,
-    },
     reserva: {
       product_id: 'snapmaker-u1-reservation',
       title: 'Reservar Snapmaker U1 — Sinal de R$ 750',
@@ -1297,33 +1256,22 @@
       summary_price: 'R$ 750',
       track_value: 750,
       submit_text: 'Gerar link da reserva',
-      wa_subject: 'reservar a *Snapmaker U1* com sinal de R$ 750 (premium da reserva). Saldo de R$ 12.970 (ou 10× R$ 1.582,82) na retirada em SP (20–30 dias)',
-      show_reserve_note: true,
+      wa_subject: 'reservar a *Snapmaker U1* com sinal de R$ 750. Saldo de R$ 12.970 (ou 10× R$ 1.582,82) na entrega em SP-Capital (20–30 dias)',
     }
   };
 
-  function checkout(mode) {
-    mode = mode === 'reserva' ? 'reserva' : 'integral';
-    const cfg = CHECKOUT_MODES[mode];
-    const modal = document.getElementById('checkoutModal');
-    modal.dataset.mode = mode;
-    document.getElementById('modalTitle').textContent = cfg.title;
-    document.getElementById('summaryProduct').textContent = cfg.product_label;
-    document.getElementById('summaryPrice').textContent = cfg.summary_price;
-    document.getElementById('reserveNote').style.display = cfg.show_reserve_note ? 'block' : 'none';
-    const submitBtn = document.querySelector('#checkoutForm .modal-submit');
-    if (submitBtn) submitBtn.textContent = cfg.submit_text;
-    openCheckoutModal(mode);
+  function checkout() {
+    // Modal já está pré-configurado em modo reserva (defaults no HTML)
+    openCheckoutModal();
   }
 
-  function openCheckoutModal(mode) {
-    mode = mode || 'integral';
-    const cfg = CHECKOUT_MODES[mode];
+  function openCheckoutModal() {
+    const cfg = CHECKOUT_MODES.reserva;
     const m = document.getElementById('checkoutModal');
     m.classList.add('open');
     document.body.style.overflow = 'hidden';
     setTimeout(() => { const f = document.getElementById('cpf'); if (f) f.focus(); }, 200);
-    track('begin_checkout', { product: 'Snapmaker U1', mode: mode, value: cfg.track_value, currency: 'BRL' });
+    track('begin_checkout', { product: 'Snapmaker U1', mode: 'reserva', value: cfg.track_value, currency: 'BRL' });
   }
   function closeCheckoutModal() {
     document.getElementById('checkoutModal').classList.remove('open');
@@ -1421,8 +1369,7 @@
       complemento: compl, bairro: get('bairro'), cidade: get('cidade'), estado: get('estado')
     };
 
-    const mode = document.getElementById('checkoutModal').dataset.mode || 'integral';
-    const cfg = CHECKOUT_MODES[mode];
+    const cfg = CHECKOUT_MODES.reserva;
 
     const whatsappMsg =
 `Olá! Quero ${cfg.wa_subject}
@@ -1433,7 +1380,7 @@ CPF/CNPJ: ${clientData.cpf}
 E-mail: ${clientData.email}
 WhatsApp: +55 ${clientData.telefone}
 
-*📍 Endereço de ${mode === 'reserva' ? 'cobrança (retirada presencial em SP)' : 'entrega'}:*
+*📍 Endereço de cobrança (entrega em SP-Capital):*
 ${clientData.endereco}, ${clientData.numero}${compl ? ' — ' + compl : ''}
 ${clientData.bairro} — ${clientData.cidade}/${clientData.estado}
 CEP: ${clientData.cep}
@@ -1442,7 +1389,7 @@ Aguardo instruções de pagamento.`;
 
     track('qualify_lead', {
       product: 'Snapmaker U1',
-      mode: mode,
+      mode: 'reserva',
       value: cfg.track_value,
       currency: 'BRL',
       city: clientData.cidade,
